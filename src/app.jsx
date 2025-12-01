@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 import Login from './components/Auth/Login';
 import Register from './components/Auth/Register';
@@ -7,6 +7,7 @@ import Dashboard from './pages/Dashboard';
 import TVPage from './pages/TVPage';
 import { useAuth } from './context/AuthContext';
 
+// Proteção de rotas
 const PrivateRoute = ({ children }) => {
   const { user, loading } = useAuth();
   
@@ -51,6 +52,8 @@ const AppContent = () => {
       } />
       <Route path="/tv" element={<TVPage />} />
       <Route path="/" element={<Navigate to="/dashboard" />} />
+      {/* Fallback route para SPA */}
+      <Route path="*" element={<Navigate to="/" />} />
     </Routes>
   );
 };
