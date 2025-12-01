@@ -7,7 +7,6 @@ import Dashboard from './pages/Dashboard';
 import TVPage from './pages/TVPage';
 import { useAuth } from './context/AuthContext';
 
-// Proteção de rotas
 const PrivateRoute = ({ children }) => {
   const { user, loading } = useAuth();
   
